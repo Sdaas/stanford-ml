@@ -12,17 +12,18 @@ m = length(y); % number of training examples
 J = 0;
 grad = zeros(size(theta));
 
-% compute cost -without- the regularization term
+% compute cost and gradient -without- the regularization term
 h = X*theta;   %  m x (n+1) dim * (n+1) x 1 dim
 e = h - y;     %  m x 1 
 J = e'*e/(2*m); %  1 x 1  
+grad = X'*(h-y)/m;
 
-% add the regularization term to the cost
+% add the regularization term to the cost and gradient
+% remember we should not regularize the Theta_0 term. So setting it to 0
 t = theta;
 t(1) = 0;
 J = J + lambda/(2*m)*t'*t; 
-
-
+grad = grad + lambda/m*t;
 
 % =========================================================================
 
