@@ -51,16 +51,23 @@ error_val   = zeros(m, 1);
 %       end
 %
 
-% ---------------------- Sample Solution ----------------------
+for k=1:m
 
+    % Create the training set
+    Xtrain = X(1:k,:);
+    ytrain = y(1:k,:);      
 
+    % Compute theta
+    theta =  trainLinearReg(Xtrain, ytrain, lambda);
 
+    % compute the training and validation error. Note that
+    % - lamda must be zero when computing error
+    % - training error must be computed over training set ( not whole of X)
+    % - validation error must be computed over full validation set 
+    error_train(k) = linearRegCostFunction(Xtrain, ytrain, theta, 0);
+    error_val(k) = linearRegCostFunction(Xval, yval, theta, 0);
+end
 
-
-
-
-% -------------------------------------------------------------
-
-% =========================================================================
+% returning error_train and error_val
 
 end
