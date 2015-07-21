@@ -13,11 +13,9 @@ centroids = zeros(K, size(X, 2));
 %               the dataset X
 %
 
-
-
-
-
-
+randIndex = randperm( size(X,1));  % randIndex cotains all the index of X in random order
+randIndex = randIndex(1:K);        % pick the first K
+centroids = X(randIndex,:)         % pick the K elements from X corresponding to those index
 
 
 % =============================================================
