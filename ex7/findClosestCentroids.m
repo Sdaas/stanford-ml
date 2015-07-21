@@ -21,8 +21,22 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+m = size(X,1);  % number of samples
+for i=1:m
+    x = X(i,:); % 1 x n
+                % centrols is a K x n matrix, where K is number of clusters
+    least_cost = Inf;
+    for k=1:K
+        ck = centroids(k,:);  % 1 x n
+        e = x - ck;
+        cost = e*e';
+        if( cost < least_cost ) 
+            idx(i) = k;
+            least_cost = cost;
+        end
+    end
 
-
+end
 
 
 
