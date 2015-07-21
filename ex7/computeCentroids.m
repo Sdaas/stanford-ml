@@ -26,11 +26,12 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
+for k=1:K
+    [r,c,v] = find(idx == k );  
+    % r is now an array that contains the index locations of all elements where idx[i] == k
+    x = X(r,:);  % Pull out all the data elements
+    centroids(k,:) = mean(x);  % compute the mean
+end
 
 
 % =============================================================
